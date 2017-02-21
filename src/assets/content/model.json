@@ -1,0 +1,7 @@
+{
+    "text": "Welcome!",
+    "items": [
+        { "title": "Foo" },
+        { "title": "Bar" }
+    ]
+}

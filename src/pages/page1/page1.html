@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Page One</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Ionic Menu Starter</h3>
+  <div [innerHtml]="content"></div>
+  <ul *ngIf="data && data.items">
+    <li *ngFor="let item of data.items">{{item.title}}</li>
+  </ul>
+</ion-content>
