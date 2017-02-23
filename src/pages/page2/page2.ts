@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 
+import {LoginService} from '../../app/login';
+
 @Component({
   selector: 'page-page2',
   templateUrl: 'page2.html'
@@ -11,7 +13,7 @@ export class Page2 {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private login: LoginService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -34,5 +36,10 @@ export class Page2 {
     this.navCtrl.push(Page2, {
       item: item
     });
+  }
+
+  ionViewCanEnter(): boolean {
+    console.log("Page2.ionViewCanEnter", this.login.isLoggedIn());
+    return this.login.isLoggedIn();
   }
 }

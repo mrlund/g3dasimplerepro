@@ -1,27 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, NgModule, Compiler, Injector } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { TemplateLoader } from '../../app/loader';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-page1',
   templateUrl: 'page1.html'
 })
 export class Page1 {
+  private loadedTemplate: any;
+  private data: any;
 
-  private content: string; 
-  private data: any; 
-
-  constructor(
-    public navCtrl: NavController,
-    private http: Http
-    ) {
-      this.http.get("/assets/content/page1.html").subscribe(content => {
-        this.content = content.text();
-        this.http.get("/assets/content/model.json").subscribe(data => {
-          this.data = data.json();
-        });
-      });
+  constructor(navParams: NavParams, templateLoader: TemplateLoader) {
+    const content = navParams.get('content');
+    this.loadedTemplate = templateLoader.load(content);
   }
-
 }

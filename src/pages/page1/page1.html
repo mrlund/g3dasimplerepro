@@ -9,8 +9,8 @@
 
 <ion-content padding>
   <h3>Ionic Menu Starter</h3>
-  <div [innerHtml]="content"></div>
-  <ul *ngIf="data && data.items">
-    <li *ngFor="let item of data.items">{{item.title}}</li>
-  </ul>
+
+  <div>
+    <dynamic-template [data]="loadedTemplate|async"></dynamic-template>
+  </div>
 </ion-content>

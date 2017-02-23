@@ -1,20 +1,16 @@
-Ionic 2 App Base
-=====================
+# NOTES
 
-This is the base template for Ionic 2 starter apps.
+## Dynamic Loading
 
-## Using this project
+* `Page1` does dynamic template loading. Note that the only thing it does is it delegates to `TemplateLoader`.
+* `TemplateLoader` compiles the template (see compileAtRuntime). This method can be removed once the compilation is done on the backend. The rest should remain the same.
+* The `DynamicTemplate` directive uses `ngComponentOutlet`, which is a preferred way to load components.
+* `DynamicLoaderModule` just packages it up nicely.
 
-You'll need the Ionic CLI with support for v2 apps:
 
-```bash
-$ npm install -g ionic
-```
+## Routing
 
-Then run:
-
-```bash
-$ ionic start myApp
-```
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/docs/v2/getting-started/) page.
+* `AppModule` shows how to configure deeplinker with segments. Page1 has a dynamic segment.
+* `MyApp` shows how to handle login by `setRoot.catch`.
+* We pass `continueToTarget` to continue the navigation once the user logs in.
+* `Page2` is protected. The user has to be logged in to access it.
